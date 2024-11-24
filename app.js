@@ -14,6 +14,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 const posts_routes = require("./routes/posts_routes")
+app.use("/", posts_routes)
 
 app.listen(port, () => {
     console.log(`listening on http://loacalhost:${port}`)

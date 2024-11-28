@@ -1,7 +1,7 @@
 GET http://localhost:3000/
 
 ###
-GET http://localhost:3000/67487f24e9a8933548f3ddc2
+GET http://localhost:3000/post/67487f24e9a8933548f3ddc2
 
 ###
 POST http://localhost:3000/

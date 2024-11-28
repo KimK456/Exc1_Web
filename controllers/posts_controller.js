@@ -24,6 +24,25 @@ const getPostById = async (req, res) => {
     }
 };
 
+const getPostBySenderId = async (req, res) => {
+    const senderId = req.query.sender;
+    console.log(senderId)
+    try{
+      if (!senderId) {
+        return res.status(400).send("Sender ID is required");
+      }
+      const postsOfSender = await Posts.find({ owner: senderId });
+      if (postsOfSender.length == 0) {
+        return res.status(404).send("No posts found for the specified ID");
+      } else {
+        res.status(200).send(postsOfSender);
+      }
+    } catch (error) {
+      res.status(400).send(error.message);
+    }
+
+}
+
 const createPost = async (req, res) => {
     console.log(req.body)
     try {
@@ -37,5 +56,6 @@ const createPost = async (req, res) => {
 module.exports = {
     getAllPosts,
     getPostById,
+    getPostBySenderId,
     createPost
 }

@@ -10,4 +10,6 @@ router.get("/post", Post.getPostBySenderId);
 
 router.post("/", Post.createPost);
 
+router.put("/post/:id", Post.editPostById);
+
 module.exports = router

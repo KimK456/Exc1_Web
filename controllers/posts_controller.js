@@ -53,9 +53,23 @@ const createPost = async (req, res) => {
     }
 }
 
+const editPostById = async(req, res) => {
+  const postId = req.params.id
+  const newPostOwner = req.body.owner
+  const newPostTitle = req.body.title
+  const newPostContent = req.body.content
+  try{
+    const updatedPost = await Posts.findByIdAndUpdate(postId, { owner: newPostOwner, title: newPostTitle, content: newPostContent }, { new: true });
+    res.status(201).send(updatedPost)
+  } catch (err) {
+    res.status(400).send(err.message)
+  }
+}
+
 module.exports = {
     getAllPosts,
     getPostById,
     getPostBySenderId,
-    createPost
+    createPost,
+    editPostById
 }

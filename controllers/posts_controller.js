@@ -53,9 +53,20 @@ const createPost = async (req, res) => {
     }
 }
 
+const editPostById = async(req, res) => {
+  console.log(req.body)
+  try{
+    
+
+  } catch (err) {
+    res.status(400).send(err.message)
+  }
+}
+
 module.exports = {
     getAllPosts,
     getPostById,
     getPostBySenderId,
-    createPost
+    createPost,
+    editPostById
 }

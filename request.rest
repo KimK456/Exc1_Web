@@ -17,11 +17,14 @@ Content-Type: application/json
 }
 
 ###
+GET http://localhost:3000/comment
+
+###
 POST http://localhost:3000/comment
 Content-Type: application/json
 
 {
     "author": "David",
     "content": "Wow",
-    "postId": "674c85d2465dede4720c79c2"
+    "postId": "674888aaa1a6b39541835fe0"
 }

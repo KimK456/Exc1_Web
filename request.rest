@@ -3,7 +3,7 @@ GET http://localhost:3000/
 ###
 GET http://localhost:3000/post/67487f24e9a8933548f3ddc2
 
-##
+###
 GET http://localhost:3000/post?sender=KimK
 
 ###
@@ -14,4 +14,14 @@ Content-Type: application/json
     "owner": "KimK",
     "title": "The Best Post",
     "content": "This is my first post"
+}
+
+###
+POST http://localhost:3000/comment
+Content-Type: application/json
+
+{
+    "author": "David",
+    "content": "Wow",
+    "postId": "674c85d2465dede4720c79c2"
 }

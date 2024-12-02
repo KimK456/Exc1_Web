@@ -28,3 +28,6 @@ Content-Type: application/json
     "content": "Wow",
     "postId": "674888aaa1a6b39541835fe0"
 }
+
+###
+GET http://localhost:3000/comment/674888aaa1a6b39541835fe0

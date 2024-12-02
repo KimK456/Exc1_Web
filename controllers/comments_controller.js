@@ -26,7 +26,20 @@ const createComment = async (req, res) => {
     }
 }
 
+const deleteComment = async (req, res) => {
+    const commentId = req.params.id;
+    console.log(commentId)
+    try {
+        const rs = await Comments.findByIdAndDelete(commentId);
+        res.status(200).send(rs);
+    } catch (error) {
+        res.status(400).send(error.message);
+  }
+
+}
+
 module.exports = {
     getAllComments,
-    createComment
+    createComment,
+    deleteComment
 }

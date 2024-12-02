@@ -6,4 +6,6 @@ router.get("/", Comment.getAllComments)
 
 router.post("/", Comment.createComment)
 
+router.delete("/:id", Comment.deleteComment)
+
 module.exports = router

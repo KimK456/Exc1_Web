@@ -30,4 +30,14 @@ Content-Type: application/json
 }
 
 ###
+PUT http://localhost:3000/comment/674e3076acd2b21103886fcf
+Content-Type: application/json
+
+{
+    "author": "David",
+    "content": "Amazing Post!"
+}
+
+###
 DELETE http://localhost:3000/comment/674e2ccec42eddc393fd4420
+

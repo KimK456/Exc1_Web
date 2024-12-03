@@ -26,6 +26,19 @@ const createComment = async (req, res) => {
     }
 }
 
+
+const editCommentById = async (req, res) => {
+    const commentId = req.params.id
+    const newCommentAuthor = req.body.author
+    const newCommentContent = req.body.content
+    try{
+        const UpdatedComment = await Comments.findByIdAndUpdate(commentId, { author: newCommentAuthor, content: newCommentContent }, { new: true });
+        res.status(201).send(UpdatedComment)
+    } catch (err) {
+        res.status(400).send(err.message)
+  }
+}
+
 const deleteComment = async (req, res) => {
     const commentId = req.params.id;
     console.log(commentId)
@@ -41,5 +54,6 @@ const deleteComment = async (req, res) => {
 module.exports = {
     getAllComments,
     createComment,
+    editCommentById,
     deleteComment
 }

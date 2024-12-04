@@ -28,7 +28,7 @@ const createComment = async (req, res) => {
 
 const getCommentsSpecificPost = async (req, res) => {
     const PostId = req.params.id
-    try{
+    try {
         const post = await Posts.findById(PostId)
         if (post) {
             const postsComments = await Comments.find({ postId: PostId });
@@ -45,8 +45,33 @@ const getCommentsSpecificPost = async (req, res) => {
     }
 }
 
+const editCommentById = async (req, res) => {
+    const commentId = req.params.id
+    const newCommentAuthor = req.body.author
+    const newCommentContent = req.body.content
+    try {
+        const UpdatedComment = await Comments.findByIdAndUpdate(commentId, { author: newCommentAuthor, content: newCommentContent }, { new: true });
+        res.status(201).send(UpdatedComment)
+    } catch (err) {
+        res.status(400).send(err.message)
+    }
+}
+
+const deleteComment = async (req, res) => {
+    const commentId = req.params.id;
+    console.log(commentId)
+    try {
+        const rs = await Comments.findByIdAndDelete(commentId);
+        res.status(200).send(rs);
+    } catch (error) {
+        res.status(400).send(error.message);
+  }
+}
+
 module.exports = {
     getAllComments,
     createComment,
-    getCommentsSpecificPost
+    getCommentsSpecificPost,
+    editCommentById,
+    deleteComment
 }
